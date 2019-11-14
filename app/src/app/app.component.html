@@ -1,0 +1,32 @@
+<h1>James Gilrane Malig</h1>
+
+
+<body>
+<form #student="ngForm">
+  <label>Name</label><br>
+  <input type="text" placeholder="Name"  required #studentname="ngModel" [class.invalid]="studentname.invalid && studentname.touched" [(ngModel)]= "studentName" name="studentName"><br>
+  <label>Age</label><br>
+  <input type="number" placeholder="Age"  required #studAge="ngModel" [class.invalid]="studAge.invalid && studAge.touched" [(ngModel)]= "studentAge" name="studentAge"><br><br>
+  <button id="btn" (click)="addStudent()" *ngIf="student.valid">Submit</button>
+</form>
+
+
+<br>
+<br>
+<table>
+<tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Operation</th>
+</tr>
+<tr *ngFor="let student of students">
+  
+  <td>{{ student.name }}</td>
+  <td>{{ student.age }}</td>
+  <td>
+    <button (click)="updateStudent(student._id)">Update</button>
+    <button (click)="deleteStudent(student._id)">Delete</button>
+  </td>
+</tr>
+</table>
+</body>
